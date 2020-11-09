@@ -6,9 +6,15 @@ class Ticket:
 
 
 def reconstruct_trip(tickets, length):
-    """
-    YOUR CODE HERE
-    """
-    # Your code here
-
+    flights = {}
+    route = [None] * length
+    for i in range(0, length):
+        current = tickets[i]
+        #starting location is key and destination is value
+        flights[current.source] = current.destination
+    route[0] = flights["NONE"]
+    route[1] = flights[route[0]]
+    if length > 2:
+        for i in range(2, length):
+            route[i] = flights[route[i - 1]]
     return route

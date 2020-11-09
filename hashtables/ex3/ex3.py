@@ -1,10 +1,26 @@
-def intersection(arrays):
-    """
-    YOUR CODE HERE
-    """
-    # Your code here
+from collections import Counter
 
-    return result
+def intersection(arrays):
+    count = 0
+    inter = []
+
+    for i in arrays:
+        if isinstance(i, list):
+            arr1 = Counter(i)
+            count += 1
+            inter.append(arr1)
+
+    result = Counter()
+
+    ans = []
+    for i in inter:
+        result += i
+
+    for (key, value) in result.items():
+        if value == count:
+            ans.append(key)
+
+    return ans
 
 
 if __name__ == "__main__":
